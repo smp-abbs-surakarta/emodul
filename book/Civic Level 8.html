@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Dropdown</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 id="chapterTitle" class="navbar-brand">Chapter Selection</h2>
+    <div>
+        <button class="btn btn-light nav-button" onclick="location.href='../index.html'">Home</button>
+        <button class="btn btn-light nav-button" onclick="reloadChapter()">Refresh</button>
+    </div>
+</nav>
+
+<iframe id="chapterFrame" src="" alt="Chapter Content" allowfullscreen></iframe>
+
+<div class="dropdown-container">
+    <button class="nav-button" onclick="previousChapter()">Previous</button>
+    <div class="dropup">
+        <button onclick="myFunction()" class="nav-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Chapter <i class="fas fa-caret-up"></i>
+        </button>
+        <div id="myDropdown" class="dropdown-menu">
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter1', 'Chapter 1')">Chapter 1</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter2', 'Chapter 2')">Chapter 2</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter3', 'Chapter 3')">Chapter 3</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter4', 'Chapter 4')">Chapter 4</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter5', 'Chapter 5')">Chapter 5</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter6', 'Chapter 6')">Chapter 6</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter7', 'Chapter 7')">Chapter 7</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter8', 'Chapter 8')">Chapter 8</a>
+        </div>
+    </div>
+    <button class="nav-button" onclick="nextChapter()">Next</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script> <!-- Link to external JS file -->
+
+<script>
+    let currentChapter = 0;
+    const chapterLinks = [
+        "https://itch.io/embed-upload/11514802?color=333333", // Chapter 1
+        "https://www.example.com/chapter2", // Chapter 2
+        "https://www.example.com/chapter3", // Chapter 3
+        "https://www.example.com/chapter4", // Chapter 4
+        "https://www.example.com/chapter5", // Chapter 5
+        "https://www.example.com/chapter6", // Chapter 6
+        "https://www.example.com/chapter7", // Chapter 7
+        "https://www.example.com/chapter8"  // Chapter 8
+    ];
+
+    const chapterTitles = [
+        "Chapter 1",
+        "Chapter 2",
+        "Chapter 3",
+        "Chapter 4",
+        "Chapter 5",
+        "Chapter 6",
+        "Chapter 7",
+        "Chapter 8"
+    ];
+</script>
+
+</body>
+</html>
