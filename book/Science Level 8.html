@@ -72,6 +72,7 @@ function loadChapter(chapterId, chapterName) {
     currentChapter = chapterTitles.indexOf(chapterName);
     document.getElementById('chapterFrame').src = chapterLinks[currentChapter];
     document.getElementById('chapterTitle').innerText = chapterName;
+    document.getElementById("myDropdown").classList.remove("show");  // Close the dropdown after selection
 }
 
 function previousChapter() {
