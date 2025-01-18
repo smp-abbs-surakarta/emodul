@@ -5,9 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter Dropdown</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <!-- Link to Bootstrap for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom navbar styling */
+        .navbar {
+            background-color: #343a40;
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-button {
+            margin-left: 10px;
+        }
+
+        .navbar .nav-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .navbar div {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu {
+            background-color: #343a40;
+        }
+
+        .dropdown-item {
+            color: white;
+        }
+
+        .dropdown-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Adjust iframe size */
+        iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+        }
+
+        /* Additional styling for dropdown container */
+        .dropdown-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .dropdown-container .nav-button {
+            margin: 0 10px;
+        }
+
+        .dropup {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: none; /* Remove default caret icon */
+        }
+
+        /* Styling for chapter title */
+        #chapterTitle {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
     <h2 id="chapterTitle" class="navbar-brand">Chapter Selection</h2>
     <div>
@@ -16,8 +93,10 @@
     </div>
 </nav>
 
+<!-- Chapter iframe -->
 <iframe id="chapterFrame" src="" alt="Chapter Content" allowfullscreen></iframe>
 
+<!-- Chapter Navigation -->
 <div class="dropdown-container">
     <button class="nav-button" onclick="previousChapter()">Previous</button>
     <div class="dropup">
@@ -39,6 +118,7 @@
     <button class="nav-button" onclick="nextChapter()">Next</button>
 </div>
 
+<!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
