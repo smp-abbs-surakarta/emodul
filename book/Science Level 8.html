@@ -25,15 +25,15 @@
             Select Chapter <i class="fas fa-caret-up"></i>
         </button>
         <div id="myDropdown" class="dropdown-menu">
-            <a class="dropdown-item" href="#" onclick="loadChapter(0, 'Chapter 1')">Chapter 1</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(1, 'Chapter 2')">Chapter 2</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(2, 'Chapter 3')">Chapter 3</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(3, 'Chapter 4')">Chapter 4</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(4, 'Chapter 5')">Chapter 5</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(5, 'Chapter 6')">Chapter 6</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(6, 'Chapter 7')">Chapter 7</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(7, 'Chapter 8')">Chapter 8</a>
-            <a class="dropdown-item" href="#" onclick="loadChapter(8, 'Chapter 9')">Chapter 9</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter1', 'Chapter 1')">Chapter 1</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter2', 'Chapter 2.1')">Chapter 2.1</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter3', 'Chapter 2.2')">Chapter 2.2</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter4', 'Chapter 2.3')">Chapter 2.3</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter5', 'Chapter 2.4')">Chapter 2.4</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter6', 'Chapter 3')">Chapter 3</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter7', 'Chapter 4')">Chapter 4</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter8', 'Chapter 5')">Chapter 5</a>
+            <a class="dropdown-item" href="#" onclick="loadChapter('chapter9', 'Chapter 6')">Chapter 6</a>
         </div>
     </div>
     <button class="nav-button" onclick="nextChapter()">Next</button>
@@ -42,62 +42,79 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="script.js"></script> <!-- Link to external JS file -->
 <script>
-    let currentChapter = 0;
-    const chapterLinks = [
-        "https://itch.io/embed-upload/11724144?color=333333", // Chapter 1
-        "https://itch.io/embed-upload/11582397?color=333333", // Chapter 2
-        "https://itch.io/embed-upload/11582477?color=333333", // Chapter 3
-        "https://itch.io/embed-upload/11755708?color=333333", // Chapter 4
-        "https://itch.io/embed-upload/11850515?color=333333", // Chapter 5
-        "https://itch.io/embed-upload/11662122?color=333333", // Chapter 6
-        "https://itch.io/embed-upload/12521539?color=333333", // Chapter 7
-        "https://itch.io/embed-upload/12450931?color=333333", // Chapter 8
-        "https://itch.io/embed-upload/12506651?color=333333"  // Chapter 9
-    ];
-    
-    const chapterTitles = [
-        "Chapter 1",
-        "Chapter 2.1",
-        "Chapter 2.2",
-        "Chapter 2.3",
-        "Chapter 2.4",
-        "Chapter 3",
-        "Chapter 4",
-        "Chapter 5",
-        "Chapter 6"
-    ];
+let currentChapter = 0;
+const chapterLinks = [
+    "https://itch.io/embed-upload/11724144?color=333333", // Chapter 1
+    "https://itch.io/embed-upload/11582397?color=333333", // Chapter 2.1
+    "https://itch.io/embed-upload/11582477?color=333333", // Chapter 2.2
+    "https://itch.io/embed-upload/11755708?color=333333", // Chapter 2.3
+    "https://itch.io/embed-upload/11850515?color=333333", // Chapter 2.4
+    "https://itch.io/embed-upload/11662122?color=333333", // Chapter 3
+    "https://itch.io/embed-upload/12521539?color=333333", // Chapter 4
+    "https://itch.io/embed-upload/12450931?color=333333", // Chapter 5
+    "https://itch.io/embed-upload/12506651?color=333333"  // Chapter 6
+];
 
-    function loadChapter(index, title) {
-        currentChapter = index;
-        document.getElementById('chapterFrame').src = chapterLinks[index];
-        document.getElementById('chapterTitle').innerText = title;
+const chapterTitles = [
+    "Chapter 1",
+    "Chapter 2.1",
+    "Chapter 2.2",
+    "Chapter 2.3",
+    "Chapter 2.4",
+    "Chapter 3",
+    "Chapter 4",
+    "Chapter 5",
+    "Chapter 6"
+];
+
+function loadChapter(chapterId, chapterName) {
+    currentChapter = chapterTitles.indexOf(chapterName);
+    document.getElementById('chapterFrame').src = chapterLinks[currentChapter];
+    document.getElementById('chapterTitle').innerText = chapterName;
+}
+
+function previousChapter() {
+    if (currentChapter > 0) {
+        currentChapter--;
+        document.getElementById('chapterFrame').src = chapterLinks[currentChapter];
+        document.getElementById('chapterTitle').innerText = chapterTitles[currentChapter];
     }
+}
 
-    function previousChapter() {
-        if (currentChapter > 0) {
-            loadChapter(currentChapter - 1, chapterTitles[currentChapter - 1]);
+function nextChapter() {
+    if (currentChapter < chapterLinks.length - 1) {
+        currentChapter++;
+        document.getElementById('chapterFrame').src = chapterLinks[currentChapter];
+        document.getElementById('chapterTitle').innerText = chapterTitles[currentChapter];
+    }
+}
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function reloadChapter() {
+    document.getElementById('chapterFrame').src = chapterLinks[currentChapter];
+}
+
+// Automatically load Chapter 1 on page load
+window.onload = function() {
+    loadChapter('chapter1', 'Chapter 1');
+};
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropdown-toggle')) {
+        let dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (let i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
         }
     }
-
-    function nextChapter() {
-        if (currentChapter < chapterLinks.length - 1) {
-            loadChapter(currentChapter + 1, chapterTitles[currentChapter + 1]);
-        }
-    }
-
-    function reloadChapter() {
-        loadChapter(currentChapter, chapterTitles[currentChapter]);
-    }
-
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Load the first chapter by default
-    loadChapter(0, "Chapter 1");
+};
 </script>
-
 </body>
 </html>
